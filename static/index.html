@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>CRUD Management System</h1>
+            <p>Manage users and products using Flask REST API</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="stats">
+            <div class="stat-card">
+                <h3>Users</h3>
+                <p id="userCount">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Products</h3>
+                <p id="productCount">0</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Users</h2>
+                <button class="add-btn" onclick="openUserModal()">
+                    + Add User
+                </button>
+            </div>
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="userSearch"
+                    placeholder="Search users..."
+                    onkeyup="searchUsers()"
+                >
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="userTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Products</h2>
+                <button class="add-btn" onclick="openProductModal()">
+                    + Add Product
+                </button>
+            </div>
+
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="productSearch"
+                    placeholder="Search products..."
+                    onkeyup="searchProducts()"
+                >
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="productTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- USER MODAL -->
+
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+
+            <span class="close" onclick="closeUserModal()">&times;</span>
+
+            <h2 id="userModalTitle">Add User</h2>
+
+            <input type="hidden" id="userId">
+
+            <label>Username</label>
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+            >
+
+            <label>Email</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter email"
+            >
+
+            <button class="save-btn" onclick="saveUser()">
+                Save User
+            </button>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT MODAL -->
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+
+            <span class="close" onclick="closeProductModal()">&times;</span>
+
+            <h2 id="productModalTitle">Add Product</h2>
+
+            <input type="hidden" id="productId">
+
+            <label>Product Name</label>
+            <input
+                type="text"
+                id="productName"
+                placeholder="Enter product name"
+            >
+
+            <label>Price</label>
+            <input
+                type="number"
+                id="productPrice"
+                placeholder="Enter price"
+                step="0.01"
+            >
+
+            <button class="save-btn" onclick="saveProduct()">
+                Save Product
+            </button>
+
+        </div>
+    </div>
+
+    <div id="message"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

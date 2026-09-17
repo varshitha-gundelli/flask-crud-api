@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from os import environ
-
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DB_URL')
 db = SQLAlchemy(app)
-
+@app.route('/')
+def home():
+    return app.send_static_file('index.html')
 # ====================
 # MODELS
 # ====================
